@@ -19,69 +19,77 @@ using namespace std;
 int main()
 {
 	int option;
-	//int treekeys[9] = {36, 17, 5, 30, 28, 81, 37, 76, 83};
+
 	avl mytree;
 
-	cout << "Choose the option you want to perform" << endl;
-
-	cout << "1. Create_Tree" << endl;
-	cout << "2. Insertion" << endl;
-	cout << "3. Deletion" << endl;
-	cout << "4. Search" << endl;
-	cout << "5. Traversal" << endl;
-	cout << "6. Delete_Tree" << endl;
-	cout << "7. Check_Balance" << endl;
-
-	cin >> option;
-
-	int output;
-	ifstream file;
-
-	switch(option)
+	while(1)
 	{
-		case 1:
-			file.open("input.txt");
-			if(file.is_open())
-			{
-				while(!file.eof())
+		cout << "Choose the option you want to perform" << endl;
+
+		cout << "1. Create_Tree" << endl;
+		cout << "2. Insertion" << endl;
+		cout << "3. Deletion" << endl;
+		cout << "4. Search" << endl;
+		cout << "5. Traversal" << endl;
+		cout << "6. Delete_Tree" << endl;
+		cout << "7. Check_Balance" << endl;
+		cout << "8. Exit" << endl;
+
+		cin >> option;
+
+		int output;
+		int bob;
+		ifstream file;
+
+		switch(option)
+		{
+			case 1:
+				file.open("input.txt");
+				if(file.is_open())
 				{
-					file >> output;
-					//cout << output << endl;
-					mytree.insert(output);
+					while(!file.eof())
+					{
+						file >> output;
+						//cout << output << endl;
+						mytree.insert(output);
+					}
 				}
-			}
-			file.close();
-			break;
-		case 2:
-			cout << "case 2";
-			break;
-		case 3:
-			cout << "case 2";
-			break;
-		case 4:
-			cout << "case 2";
-			break;
-		case 5:
-			cout << "case 2";
-			break;
-		case 6:
-			cout << "case 2";
-			break;
-		case 7:
-			cout << "case 2";
-			break;
-		default:
-			cout << "Not a valid option try again";
-			break;
+				file.close();
+
+				cout << "printing the tree in order\nafter adding numbers\n";
+
+				mytree.printinorder();
+
+				bob = mytree.heighthelper();
+
+				cout << "\nThe height of the tree is " << bob << endl;
+
+				break;
+			case 2:
+				cout << "case 2";
+				break;
+			case 3:
+				cout << "case 2";
+				break;
+			case 4:
+				cout << "case 2";
+				break;
+			case 5:
+				cout << "case 2";
+				break;
+			case 6:
+				cout << "case 2";
+				break;
+			case 7:
+				cout << "case 2";
+				break;
+			case 8:
+				exit(1);
+				break;
+			default:
+				cout << "Not a valid option try again";
+				break;
+		}
 	}
-
-	cout << "printing the tree in order\nafter adding numbers\n";
-
-	mytree.printinorder();
-
-	int bob = mytree.heighthelper();
-
-	cout << "\nThe height of the tree is " << bob << endl;
-
 	return 0;
 }

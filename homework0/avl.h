@@ -19,34 +19,33 @@ private:
 		int bf;
 		avlnode *left;
 		avlnode *right;
+		avlnode *parent;
 	};
 
 	avlnode *root;
 
 	avlnode *getroot();
-	avlnode *insertprivate(int key, avlnode *ptr);
+	void deletekey(int key);
 	void printinorderprivate(avlnode *ptr);
 	void printpreorderprivate(avlnode *ptr);
 	void printpostorderprivate(avlnode *ptr);
-
+	void setbalance(avlnode *ptr);
+	void rebalance(avlnode *ptr);
+	avlnode *createleaf(int key, avlnode *p);
 
 public:
 
 	avl();
-	avlnode *createleaf(int key);
-	avlnode *insert(int key);
 	void printinorder();
 	void printpreorder();
 	void printpostorder();
 	int height(avlnode *p);
-	void fixheight(avlnode *p);
-	int bfactor(avlnode *p);
+	bool insert(int key);
 	avlnode *rright(avlnode *p);
 	avlnode *rleft(avlnode *p);
 	avlnode *rrleft(avlnode *p);
 	avlnode *rrright(avlnode *p);
 	avlnode *balance(avlnode *p);
-	int heighthelper();
 
 
 };

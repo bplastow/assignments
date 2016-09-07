@@ -38,7 +38,6 @@ int main()
 		cin >> option;
 
 		int output;
-		int bob;
 		ifstream file;
 
 		switch(option)
@@ -56,13 +55,9 @@ int main()
 				}
 				file.close();
 
-				cout << "printing the tree in order\nafter adding numbers\n";
+				cout << "\nprinting the tree in order\nafter adding numbers\n" << endl;;
 
 				mytree.printinorder();
-
-				bob = mytree.heighthelper();
-
-				cout << "\nThe height of the tree is " << bob << endl;
 
 				break;
 			case 2:
@@ -78,7 +73,7 @@ int main()
 				cout << "case 2";
 				break;
 			case 6:
-				cout << "case 2";
+				cout << "Tree deleted";
 				break;
 			case 7:
 				cout << "case 2";
@@ -91,7 +86,6 @@ int main()
 				break;
 		}
 	}
-	cout << "hello there";
 
 	return 0;
 }

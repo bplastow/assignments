@@ -154,6 +154,17 @@ void avl::deletekey(int key)
 
 }
 
+//function to delete tree
+void avl::deletetree(avlnode *n)
+{
+	if(n != NULL)
+	{
+		deletetree(n->left);
+		deletetree(n->right);
+		free(n);
+	}
+}
+
 // function to get the height of the node
 int avl::height(avlnode *p)
 {
@@ -275,7 +286,22 @@ void avl::printpreorder()
 
 void avl::printpreorderprivate(avlnode *ptr)
 {
-
+	if(root != NULL)
+	{
+		cout << ptr->data << " ";
+		if(ptr->left != NULL)
+		{
+			printinorderprivate(ptr->left);
+		}
+		if(ptr->right != NULL)
+		{
+			printinorderprivate(ptr->right);
+		}
+	}
+	else
+	{
+		cout << "The tree is empty\n";
+	}
 }
 
 void avl::printpostorder()
@@ -285,7 +311,22 @@ void avl::printpostorder()
 
 void avl::printpostorderprivate(avlnode *ptr)
 {
-
+	if(root != NULL)
+	{
+		if(ptr->left != NULL)
+		{
+			printinorderprivate(ptr->left);
+		}
+		if(ptr->right != NULL)
+		{
+			printinorderprivate(ptr->right);
+		}
+		cout << ptr->data << " ";
+	}
+	else
+	{
+		cout << "The tree is empty\n";
+	}
 }
 
 avl::avlnode *avl::getroot()

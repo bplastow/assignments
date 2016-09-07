@@ -39,6 +39,7 @@ public:
 	void printinorder();
 	void printpreorder();
 	void printpostorder();
+	void deletetree(avlnode* n);
 	int height(avlnode *p);
 	bool insert(int key);
 	avlnode *rright(avlnode *p);

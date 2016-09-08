@@ -5,6 +5,10 @@
  *      Author: Blaine
  */
 
+#include<fstream>
+#include<iostream>
+using namespace std;
+
 #ifndef AVL_H_
 #define AVL_H_
 
@@ -49,6 +53,8 @@ public:
 	avlnode *rrright(avlnode *p);
 	avlnode *balance(avlnode *p);
 	void search(int val);
+	int checkbalance(avlnode *ptr);
+	void writetofile(ofstream &outputfile, int x);
 
 };
 

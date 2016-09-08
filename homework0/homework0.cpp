@@ -25,6 +25,7 @@ int main()
 	int number;
 
 	ofstream outfile;
+	ifstream file;
 
 	outfile.open(FILENAME);
 
@@ -47,7 +48,6 @@ int main()
 		cin >> option;
 
 		int output;
-		ifstream file;
 
 		switch(option)
 		{
@@ -66,9 +66,11 @@ int main()
 
 				cout << "Create Tree: ";
 
-				outfile << "Create Tree:" << endl;
+				outfile << "test";
 
 				mytree.printpreorder();
+
+				cout << endl;
 
 				outfile.close();
 
@@ -102,13 +104,19 @@ int main()
 				switch(option2)
 				{
 					case 1:
+						cout << "Pre-order: ";
 						mytree.printpreorder();
+						cout << endl;
 						break;
 					case 2:
+						cout << "Post-order: ";
 						mytree.printpostorder();
+						cout << endl;
 						break;
 					case 3:
+						cout << "In-order: ";
 						mytree.printinorder();
+						cout << endl;
 						break;
 				}
 
@@ -118,7 +126,15 @@ int main()
 				cout << "Delete Tree: Tree deleted";
 				break;
 			case 7:
-				cout << "case 2";
+				if(mytree.getroot() == NULL)
+				{
+					cout << "The tree is empty" << endl;
+				}
+				else
+				{
+					cout << "Check Balance: ";
+					cout << mytree.checkbalance(mytree.getroot()) << endl;
+				}
 				break;
 			case 8:
 				exit(1);

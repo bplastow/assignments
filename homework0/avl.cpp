@@ -46,11 +46,19 @@ void avl::rebalance(avlnode *ptr)
 	}
 }
 
+// function to check the balance of the root node
+int avl::checkbalance(avlnode *ptr)
+{
+	return ptr->bf;
+}
+
+// function to set the balance of a node
 void avl::setbalance(avlnode *ptr)
 {
 	ptr->bf = height(ptr->right) - height(ptr->left);
 }
 
+// function to search through the tree for a value
 void avl::search(int val)
 {
 	avlnode *n = searchprivate(val, root);
@@ -88,6 +96,7 @@ avl::avlnode *avl::searchprivate(int key, avlnode *p)
 
 }
 
+// function to insert a node into the tree
 bool avl::insert(int key)
 {
 	if(root == NULL)
@@ -131,6 +140,7 @@ bool avl::insert(int key)
 	return true;
 }
 
+// function to create a leaf if the node is NULL
 avl::avlnode *avl::createleaf(int key, avlnode *p){
 	avlnode *n = new avlnode();
 	n->data = key;
@@ -293,11 +303,13 @@ avl::avlnode *avl::rrright(avlnode *p)
 
 // functions to handle traversal
 
+// function to print in-order
 void avl::printinorder()
 {
 	printinorderprivate(root);
 }
 
+// helper function for print in-order
 void avl::printinorderprivate(avlnode *ptr)
 {
 	if(root != NULL)
@@ -318,11 +330,13 @@ void avl::printinorderprivate(avlnode *ptr)
 	}
 }
 
+//function to print pre-order
 void avl::printpreorder()
 {
 	printpreorderprivate(root);
 }
 
+// helper function for the print pre-order
 void avl::printpreorderprivate(avlnode *ptr)
 {
 	if(root != NULL)
@@ -343,11 +357,13 @@ void avl::printpreorderprivate(avlnode *ptr)
 	}
 }
 
+// function to print post-order
 void avl::printpostorder()
 {
 	printpostorderprivate(root);
 }
 
+// helper function to print post-order
 void avl::printpostorderprivate(avlnode *ptr)
 {
 	if(root != NULL)
@@ -368,6 +384,7 @@ void avl::printpostorderprivate(avlnode *ptr)
 	}
 }
 
+// function used to get the root node
 avl::avlnode *avl::getroot()
 {
 	return root;

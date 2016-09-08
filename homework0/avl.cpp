@@ -51,6 +51,43 @@ void avl::setbalance(avlnode *ptr)
 	ptr->bf = height(ptr->right) - height(ptr->left);
 }
 
+void avl::search(int val)
+{
+	avlnode *n = searchprivate(val, root);
+	if(n == NULL)
+	{
+		if(root == NULL){
+			cout << "Tree is empty" << endl;
+		}
+		else
+		{
+			cout << "Node " << val << " was not found in the tree" << endl;
+		}
+	}
+	else
+	{
+		cout << "Node " << val << " was found at height " <<  height(n);
+	}
+}
+
+//function to search the tree
+avl::avlnode *avl::searchprivate(int key, avlnode *p)
+{
+	if(p == NULL || p->data == key)
+	{
+		return p;
+	}
+
+	if(p->data < key)
+	{
+		return searchprivate(key, p->right);
+	}
+	else{
+		return searchprivate(key, p->left);
+	}
+
+}
+
 bool avl::insert(int key)
 {
 	if(root == NULL)
@@ -65,7 +102,7 @@ bool avl::insert(int key)
 		{
 			if(n->data == key)
 			{
-				cout << "Key " << key << " has already been added to the tree";
+				cout << "Node " << key << " has already been added to the tree" << endl;
 				return false;
 			}
 
@@ -151,7 +188,8 @@ void avl::deletekey(int key)
 			rebalance(parent);
 		}
 	}
-
+	else
+		cout << "Node cannot be found. Deletion cannot be performed" << endl;
 }
 
 //function to delete tree
@@ -163,6 +201,7 @@ void avl::deletetree(avlnode *n)
 		deletetree(n->right);
 		free(n);
 	}
+	root = NULL;
 }
 
 // function to get the height of the node
@@ -275,7 +314,7 @@ void avl::printinorderprivate(avlnode *ptr)
 	}
 	else
 	{
-		cout << "The tree is empty\n";
+		cout << "The tree is empty" << endl;
 	}
 }
 
@@ -291,16 +330,16 @@ void avl::printpreorderprivate(avlnode *ptr)
 		cout << ptr->data << " ";
 		if(ptr->left != NULL)
 		{
-			printinorderprivate(ptr->left);
+			printpreorderprivate(ptr->left);
 		}
 		if(ptr->right != NULL)
 		{
-			printinorderprivate(ptr->right);
+			printpreorderprivate(ptr->right);
 		}
 	}
 	else
 	{
-		cout << "The tree is empty\n";
+		cout << "The tree is empty" << endl;
 	}
 }
 
@@ -315,17 +354,17 @@ void avl::printpostorderprivate(avlnode *ptr)
 	{
 		if(ptr->left != NULL)
 		{
-			printinorderprivate(ptr->left);
+			printpostorderprivate(ptr->left);
 		}
 		if(ptr->right != NULL)
 		{
-			printinorderprivate(ptr->right);
+			printpostorderprivate(ptr->right);
 		}
 		cout << ptr->data << " ";
 	}
 	else
 	{
-		cout << "The tree is empty\n";
+		cout << "The tree is empty" << endl;
 	}
 }
 

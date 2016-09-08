@@ -14,16 +14,25 @@
 
 #include "avl.h"
 
+#define FILENAME "plastow-A02235496.txt",ios::app
+
 using namespace std;
 
 int main()
 {
 	int option;
+	int option2;
+	int number;
+
+	ofstream outfile;
+
+	outfile.open(FILENAME);
 
 	avl mytree;
 
 	while(1)
 	{
+		cout << endl;
 		cout << "Choose the option you want to perform" << endl;
 
 		cout << "1. Create_Tree" << endl;
@@ -43,37 +52,70 @@ int main()
 		switch(option)
 		{
 			case 1:
+				mytree.deletetree(mytree.getroot());
 				file.open("input.txt");
 				if(file.is_open())
 				{
 					while(!file.eof())
 					{
 						file >> output;
-						//cout << output << endl;
 						mytree.insert(output);
 					}
 				}
 				file.close();
 
-				cout << "\nprinting the tree in order\nafter adding numbers\n" << endl;;
+				cout << "Create Tree: ";
 
-				mytree.printinorder();
+				outfile << "Create Tree:" << endl;
+
+				mytree.printpreorder();
+
+				outfile.close();
 
 				break;
 			case 2:
-				cout << "case 2";
+				cout << "Enter number to add to tree" << endl;
+				cin >> number;
+				mytree.insert(number);
+				cout << "Updated tree: ";
+				mytree.printpreorder();
 				break;
 			case 3:
-				cout << "case 2";
+				cout << "Enter a number to be deleted from tree" << endl;
+				cin >> number;
+				mytree.deletekey(number);
+				cout << "Updated tree: ";
+				mytree.printpreorder();
 				break;
 			case 4:
-				cout << "case 2";
+				cout << "Enter a number to search for in tree" << endl;
+				cin >> number;
+				mytree.search(number);
 				break;
 			case 5:
-				cout << "case 2";
+				cout << "what type of traversal:" << endl;
+				cout << "1. Pre_order" << endl;
+				cout << "2. Post_order" << endl;
+				cout << "3. In_order" << endl;
+				cin >> option2;
+
+				switch(option2)
+				{
+					case 1:
+						mytree.printpreorder();
+						break;
+					case 2:
+						mytree.printpostorder();
+						break;
+					case 3:
+						mytree.printinorder();
+						break;
+				}
+
 				break;
 			case 6:
-				cout << "Tree deleted";
+				mytree.deletetree(mytree.getroot());
+				cout << "Delete Tree: Tree deleted";
 				break;
 			case 7:
 				cout << "case 2";
